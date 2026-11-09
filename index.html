@@ -3,53 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff7cf">
   <title>無題のホームページ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <header class="welcome">
+  <a id="top"></a>
+  <main class="site">
+    <header class="hero panel">
+      <p class="eyebrow">★ WELCOME ★</p>
       <h1>ようこそ！</h1>
-      <div class="counter">あなたは <strong>000123</strong> 人目のお客様です</div>
-      <p class="kiriban">キリ番を踏んだらラッキー！　踏み逃げOK</p>
+      <p class="intro">ゆっくりしていってください。</p>
+      <p class="construction blink">★このサイトは現在も工事中です★</p>
     </header>
 
-    <p class="construction">★このサイトは現在も工事中です★</p>
+    <section class="panel counter">
+      <h2>◆ キリ番報告</h2>
+      <p>キリ番を踏んだ方は、心の中でそっと報告してください。</p>
+      <div class="counter-number">あなたは <strong>000001</strong> 人目のお客様です。</div>
+      <p class="small-note">キリ番を踏んだらラッキー！ 踏み逃げOK</p>
+    </section>
 
-    <main>
-      <section class="panel daily">
-        <h2>今日の一言</h2>
-        <p id="daily-message">本日の一言を読み込み中...</p>
-      </section>
+    <section class="panel">
+      <h2>◆ おしらせ</h2>
+      <p>特にお知らせはありません。</p>
+    </section>
 
-      <section class="panel notices">
-        <h2>おしらせ</h2>
-        <p>特にお知らせはありません</p>
-      </section>
+    <section class="panel">
+      <h2>◆ 今日のひとこと</h2>
+      <p class="daily-line" id="daily-line">本日は定休日です。</p>
+      <p class="daily-credit" id="daily-credit"></p>
+    </section>
 
-      <!-- GIFは決まったら、ここやページ内の好きな場所に img タグで追加します。 -->
-    </main>
+    <!-- GIFはページを開くたびにランダムに入れ替わります -->
+    <div class="gif-shelf" id="gif-shelf" aria-label="ランダムなGIF">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mycat.gif" alt="動く猫のGIF">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sleeping-cat.gif" alt="眠る猫のGIF">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Animatedkitty.gif" alt="猫のアニメーションGIF">
+    </div>
 
-    <footer>またきてね！</footer>
-  </div>
+    <section class="panel">
+      <h2>◆ リンク</h2>
+      <p class="link-call">相互リンク募集中！</p>
+      <ul class="link-list">
+        <li><a href="#top">このページのいちばん上</a></li>
+      </ul>
+    </section>
 
-  <script>
-    const messages = [
-      '今日は特に何もありません。',
-      '管理人は水を飲みました。',
-      'このサイトに深い意味はありません。',
-      '本日の営業は通常どおり、特に何もしていません。',
-      '何かを更新したい気持ちだけはあります。',
-      'ここまで来てくれてありがとうございます。',
-      '今日は昨日の次の日です。',
-      '重要なお知らせはありません。'
-    ];
-
-    // 日付を使って選ぶので、同じ日は同じ一言、翌日は別の一言になります。
-    const today = new Date();
-    const dayNumber = Math.floor(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000);
-    const message = messages[dayNumber % messages.length];
-    document.getElementById('daily-message').textContent = message;
-  </script>
+    <footer class="footer">
+      <p>無断転載禁止……と言うほどのものはまだありません。</p>
+      <p>© 2026 無題のホームページ</p>
+      <a href="#top" class="top-link">▲ TOPへ戻る</a>
+    </footer>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
