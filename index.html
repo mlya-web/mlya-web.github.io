@@ -1,61 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff7cf">
-  <title>無題のホームページ</title>
+  <meta name="theme-color" content="#bdebf5">
+  <meta name="description" content="すいぞくかん.dat。小さなインターネットの水族館です。">
+  <title>すいぞくかん.dat</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a id="top"></a>
-  <main class="site">
+  <div class="sea-decor" aria-hidden="true">
+    <span class="fish fish-a">🐠</span>
+    <span class="fish fish-b">🐟</span>
+    <span class="fish fish-c">🐡</span>
+    <span class="fish fish-d">🐟</span>
+    <span class="fish fish-e">🐠</span>
+    <span class="fish fish-f">🐟</span>
+    <div class="bubbles" id="bubbles"></div>
+  </div>
+
+  <main class="site-shell">
     <header class="hero panel">
+      <div class="top-strip"><span>●</span> WELCOME TO MY LITTLE WEB AQUARIUM <span>●</span></div>
       <p class="eyebrow">★ WELCOME ★</p>
-      <h1>ようこそ！</h1>
+      <div class="logo-wrap">
+        <h1 class="logo">すいぞくかん<span>.dat</span></h1>
+        <span class="logo-star star-one">✦</span>
+        <span class="logo-star star-two">☆</span>
+      </div>
+      <p class="welcome">ようこそ！</p>
       <p class="intro">ゆっくりしていってください。</p>
       <p class="construction blink">★このサイトは現在も工事中です★</p>
+      <nav class="main-nav" aria-label="サイト内メニュー">
+        <a href="#news">おしらせ</a>
+        <a href="#diary">DIARY</a>
+        <a href="#fortune">今日の運勢</a>
+        <a href="#bbs">BBS</a>
+        <a href="#links">LINK</a>
+      </nav>
     </header>
 
-    <section class="panel counter">
-      <h2>◆ キリ番報告</h2>
-      <p>キリ番を踏んだ方は、心の中でそっと報告してください。</p>
-      <div class="counter-number">あなたは <strong>000001</strong> 人目のお客様です。</div>
-      <p class="small-note">キリ番を踏んだらラッキー！ 踏み逃げOK</p>
+    <section class="counter-panel panel" aria-label="アクセスカウンター">
+      <div class="counter-heading">✧ ACCESS COUNTER ✧</div>
+      <div class="counter-label">あなたは</div>
+      <div class="counter-number"><span id="count">000000</span></div>
+      <div class="counter-caption">人目のお客様です！</div>
+      <p class="small-note">キリ番を踏んだらラッキー！踏み逃げOK</p>
     </section>
 
-    <section class="panel">
-      <h2>◆ おしらせ</h2>
-      <p>特にお知らせはありません。</p>
-    </section>
+    <div class="columns">
+      <aside class="sidebar">
+        <section class="panel mini-panel">
+          <h2>◆ MENU</h2>
+          <ul class="menu-list">
+            <li><a href="#news">おしらせ</a></li>
+            <li><a href="#today">今日のひとこと</a></li>
+            <li><a href="#diary">DIARY</a></li>
+            <li><a href="#fortune">今日の運勢</a></li>
+            <li><a href="#bbs">BBS</a></li>
+            <li><a href="#links">LINK</a></li>
+            <li><a href="#thanks">WEB拍手</a></li>
+          </ul>
+        </section>
+        <section class="panel mini-panel side-note">
+          <h2>◆ INFORMATION</h2>
+          <p>ここは小さな個人サイトです。</p>
+          <p class="tiny">Since 2026 / Please enjoy!</p>
+          <div class="pixel-fish" aria-hidden="true">🐟　｡ﾟ･</div>
+        </section>
+      </aside>
 
-    <section class="panel">
-      <h2>◆ 今日のひとこと</h2>
-      <p class="daily-line" id="daily-line">本日は定休日です。</p>
-      <p class="daily-credit" id="daily-credit"></p>
-    </section>
+      <div class="main-column">
+        <section class="panel content-panel" id="news">
+          <h2>◆ おしらせ</h2>
+          <div class="inner-paper"><p>特にお知らせはありません。</p></div>
+        </section>
 
-    <!-- GIFはページを開くたびにランダムに入れ替わります -->
-    <div class="gif-shelf" id="gif-shelf" aria-label="ランダムなGIF">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mycat.gif" alt="動く猫のGIF">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sleeping-cat.gif" alt="眠る猫のGIF">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Animatedkitty.gif" alt="猫のアニメーションGIF">
+        <section class="panel content-panel" id="today">
+          <h2>◆ 今日のひとこと</h2>
+          <div class="inner-paper quote-box">
+            <p id="daily-line">本日は定休日です。</p>
+            <p class="credit" id="daily-credit"></p>
+          </div>
+        </section>
+
+        <section class="panel content-panel" id="diary">
+          <h2>◆ DIARY</h2>
+          <div class="inner-paper">
+            <p class="date-stamp">2026.11.10</p>
+            <p>水族館を改装中です。まだまだ工事は続きます。</p>
+            <p class="tiny">※日記はこれから更新していきます。</p>
+          </div>
+        </section>
+
+        <section class="panel content-panel" id="fortune">
+          <h2>◆ 今日の運勢</h2>
+          <div class="inner-paper fortune-box">
+            <span class="fortune-star">✦</span>
+            <p id="fortune-text">今日の運勢を読み込み中...</p>
+          </div>
+        </section>
+
+        <section class="panel content-panel" id="bbs">
+          <h2>◆ BBS</h2>
+          <p class="section-lead">お気軽に書き込んでください！</p>
+          <div class="guestbook-frame">
+            <iframe src="https://www.ultraguest.com/embed/8frthmdx" title="Guestbook" width="100%" height="520" loading="lazy" referrerpolicy="no-referrer"></iframe>
+          </div>
+          <p class="tiny">※個人情報や連絡先などは書き込まないでください。</p>
+        </section>
+
+        <section class="panel content-panel" id="links">
+          <h2>◆ LINK</h2>
+          <div class="inner-paper link-box">
+            <p>相互リンク募集中！</p>
+            <p class="tiny">リンクしてくださる方はBBSからお知らせください。</p>
+          </div>
+        </section>
+
+        <section class="panel content-panel" id="thanks">
+          <h2>◆ WEB拍手</h2>
+          <div class="inner-paper applause-box">
+            <p>ぱちぱちしてもらえるとうれしいです ✧</p>
+            <p class="tiny">WEB拍手のサービス設定後、ここにボタンを設置します。</p>
+            <span class="applause-placeholder">👏 準備中</span>
+          </div>
+        </section>
+      </div>
+
+      <aside class="sidebar right-sidebar">
+        <section class="panel mini-panel">
+          <h2>◆ AQUARIUM</h2>
+          <p>おさかながサイトの中を自由に泳いでいます。</p>
+          <div class="fish-sign" aria-hidden="true">🐠　🐟　🐡</div>
+        </section>
+        <section class="panel mini-panel">
+          <h2>◆ THANK YOU</h2>
+          <p>遊びに来てくれてありがとうございます。</p>
+          <p class="tiny">また来てね！</p>
+          <div class="sparkles">☆ ✧ ☆</div>
+        </section>
+      </aside>
     </div>
 
-    <section class="panel">
-      <h2>◆ リンク</h2>
-      <p class="link-call">相互リンク募集中！</p>
-      <ul class="link-list">
-        <li><a href="#top">このページのいちばん上</a></li>
-      </ul>
-    </section>
-
-    <footer class="footer">
+    <footer class="panel footer">
       <p>無断転載禁止……と言うほどのものはまだありません。</p>
-      <p>© 2026 無題のホームページ</p>
-      <a href="#top" class="top-link">▲ TOPへ戻る</a>
+      <p class="tiny">© すいぞくかん.dat</p>
+      <a href="#top" class="back-top">▲ ページの上へ</a>
     </footer>
   </main>
+
+  <script src="https://counter.nanasi-rasi.net/counter.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
