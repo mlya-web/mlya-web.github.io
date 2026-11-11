@@ -37,11 +37,11 @@ a:hover { color: #668acb; background: #fff4c5; }
 .main-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; }
 .main-nav a { display: inline-block; padding: 3px 12px; border: 1px solid #f0c5d4; border-radius: 999px; background: #fff9fc; font-size: 12px; text-decoration: none; }
 .counter-panel { text-align: center; margin: 12px 0 16px; padding: 10px 12px 9px; background: #fffef8; border-color: #e8d99d; }
-.counter-message { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 7px; color: #7386a4; font-weight: 700; font-size: 16px; }
 .counter-number { display: inline-flex; align-items: baseline; justify-content: center; padding: 5px 12px; color: #b6f0d2; background: #344b50; border: 4px ridge #9bb6ad; border-radius: 5px; font: 800 34px/1.25 ui-monospace, "Courier New", monospace; letter-spacing: 4px; text-shadow: 0 0 5px #b6f0d2; }
 #count { display: inline-flex; white-space: nowrap; }
 .digit { display: inline-block; position: relative; width: .66em; text-align: center; }
 .digit.zero::after { content: ""; position: absolute; left: 18%; top: 49%; width: 64%; height: 2px; background: currentColor; transform: rotate(-48deg); transform-origin: center; box-shadow: 0 0 2px rgba(182,240,210,.5); }
+.counter-suffix { margin-left: 7px; font: 700 14px/1.2 "M PLUS Rounded 1c", sans-serif; letter-spacing: 0; text-shadow: none; }
 .small-note { margin: 5px 0 0; color: #9a8290; font-size: 11px; }
 .columns { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 14px; align-items: start; }
 .sidebar { padding: 13px; position: sticky; top: 12px; }
@@ -77,12 +77,13 @@ a:hover { color: #668acb; background: #fff4c5; }
 .fish-six { top: 42%; left: -150px; animation-duration: 57s; animation-delay: -38s; width: clamp(46px,6vw,84px); }
 @keyframes swim-right { from { transform: translateX(0) scaleX(-1); } to { transform: translateX(calc(100vw + 300px)) scaleX(-1); } }
 @keyframes swim-left { from { transform: translateX(0) scaleX(1); } to { transform: translateX(calc(-100vw - 300px)) scaleX(1); } }
-.random-decor { position: absolute; inset: 0; }
-.random-decor img { position: absolute; height: auto; object-fit: contain; }
-.random-bubble-art { width: clamp(62px, 9vw, 126px); opacity: .46; }
-.random-sparkle-art { width: clamp(70px, 10vw, 140px); opacity: .56; }
-.bubble-emoji { position: absolute; display: block; font-size: clamp(18px, 3vw, 34px); opacity: .68; animation: emoji-float var(--duration) ease-in-out infinite; }
-@keyframes emoji-float { 0%,100% { transform: translate3d(0,0,0) rotate(-8deg); } 50% { transform: translate3d(var(--drift),-35px,0) rotate(8deg); } }
+.bubble-cluster, .sparkle-cluster { position: absolute; height: auto; opacity: .52; }
+.bubble-cluster { width: clamp(90px,13vw,170px); }
+.bubble-one { left: 2%; top: 24%; }
+.bubble-two { right: 3%; top: 66%; transform: rotate(18deg); }
+.sparkle-cluster { width: clamp(100px,14vw,190px); opacity: .62; }
+.sparkle-one { right: 2%; top: 8%; }
+.sparkle-two { left: 3%; top: 78%; transform: rotate(-12deg); }
 .bubble { position: absolute; bottom: -24px; border: 1px solid rgba(255,255,255,.9); border-radius: 50%; background: rgba(255,255,255,.22); box-shadow: inset -2px -2px 4px rgba(115,205,222,.22); animation: rise var(--duration) linear forwards; }
 @keyframes rise { 0% { transform: translate3d(0,0,0) scale(.65); opacity: 0; } 12% { opacity: .72; } 80% { opacity: .55; } 100% { transform: translate3d(var(--drift),-110vh,0) scale(1.15); opacity: 0; } }
 @media (max-width: 720px) {
@@ -93,12 +94,11 @@ a:hover { color: #668acb; background: #fff4c5; }
   .menu-list { display: flex; flex-wrap: wrap; gap: 4px 18px; }
   .main-nav { gap: 5px; }
   .main-nav a { padding: 3px 9px; font-size: 11px; }
-  .counter-message { gap: 5px; font-size: 13px; }
-  .counter-number { font-size: 27px; letter-spacing: 2px; padding: 4px 8px; }
+  .counter-number { font-size: 27px; letter-spacing: 2px; }
+  .counter-suffix { font-size: 12px; }
   .content-panel { padding: 10px; }
   .swimmer { opacity: .66; }
-  .random-bubble-art { opacity: .34; }
-  .random-sparkle-art { opacity: .42; }
+  .bubble-cluster, .sparkle-cluster { opacity: .38; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }

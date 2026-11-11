@@ -9,24 +9,28 @@
 </head>
 <body>
   <div class="sea-decor" aria-hidden="true">
-    <img class="swimmer fish-blue swim-right fish-one" src="assets/fish-blue.png" alt="">
-    <img class="swimmer fish-yellow swim-left fish-two" src="assets/fish-yellow.png" alt="">
-    <img class="swimmer fish-pink swim-right fish-three" src="assets/fish-pink.png" alt="">
-    <img class="swimmer fish-blue swim-left fish-four" src="assets/fish-blue.png" alt="">
-    <img class="swimmer fish-pink swim-left fish-five" src="assets/fish-pink.png" alt="">
-    <img class="swimmer fish-yellow swim-right fish-six" src="assets/fish-yellow.png" alt="">
-    <div class="random-decor" id="random-decor" aria-hidden="true"></div>
+    <img class="swimmer fish-blue swim-right fish-one" src="fish-blue.png" alt="">
+    <img class="swimmer fish-yellow swim-left fish-two" src="fish-yellow.png" alt="">
+    <img class="swimmer fish-pink swim-right fish-three" src="fish-pink.png" alt="">
+    <img class="swimmer fish-blue swim-left fish-four" src="fish-blue.png" alt="">
+    <img class="swimmer fish-pink swim-left fish-five" src="fish-pink.png" alt="">
+    <img class="swimmer fish-yellow swim-right fish-six" src="fish-yellow.png" alt="">
+    <img class="bubble-cluster bubble-one" src="bubbles.png" alt="">
+    <img class="bubble-cluster bubble-two" src="bubbles.png" alt="">
+    <img class="sparkle-cluster sparkle-one" src="sparkles.png" alt="">
+    <img class="sparkle-cluster sparkle-two" src="sparkles.png" alt="">
     <div class="bubbles" id="bubbles"></div>
   </div>
 
   <main class="site-shell" id="top">
     <header class="hero panel">
-      <img class="site-logo" src="assets/logo-suizokukan.jpg" alt="すいぞくかん.dat">
+      <img class="site-logo" src="logo-suizokukan.jpg" alt="すいぞくかん.dat">
       <p class="welcome">ようこそ！</p>
       <p class="construction blink">★このサイトは現在も工事中です★</p>
       <nav class="main-nav" aria-label="サイト内メニュー">
         <a href="#news">おしらせ</a>
         <a href="#today">今日のひとこと</a>
+        <a href="#diary">DIARY</a>
         <a href="#fortune">今日の運勢</a>
         <a href="#bbs">BBS</a>
         <a href="#links">LINK</a>
@@ -35,7 +39,7 @@
     </header>
 
     <section class="counter-panel panel" aria-label="アクセスカウンター">
-      <div class="counter-message"><span>あなたは</span><span class="counter-number"><span id="count">0000000</span></span><span>人目のお客様です！</span></div>
+      <div class="counter-number"><span id="count">0000000</span><span class="counter-suffix">人目の</span></div>
       <p class="small-note">キリ番を踏んだらラッキー！踏み逃げOK</p>
     </section>
 
@@ -45,6 +49,7 @@
         <ul class="menu-list">
           <li><a href="#news">おしらせ</a></li>
           <li><a href="#today">今日のひとこと</a></li>
+          <li><a href="#diary">DIARY</a></li>
           <li><a href="#fortune">今日の運勢</a></li>
           <li><a href="#bbs">BBS</a></li>
           <li><a href="#links">LINK</a></li>
@@ -64,6 +69,11 @@
             <p id="daily-line">本日は定休日です。</p>
             <p class="credit" id="daily-credit"></p>
           </div>
+        </section>
+
+        <section class="panel content-panel" id="diary">
+          <h2>DIARY</h2>
+          <div class="inner-paper diary-space"></div>
         </section>
 
         <section class="panel content-panel" id="fortune">
