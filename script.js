@@ -59,6 +59,42 @@ const fortunes = [
 const fortuneText = document.getElementById('fortune-text');
 if (fortuneText) fortuneText.textContent = fortunes[hashDate(dateKey + '-fortune') % fortunes.length];
 
+
+// 泡とキラキラのドット絵を毎回ランダムな位置に散りばめます。
+const decorHost = document.getElementById('random-decor');
+if (decorHost) {
+  const decorations = [
+    { src: 'assets/bubbles.png', className: 'random-bubble-art', count: 7 },
+    { src: 'assets/sparkles.png', className: 'random-sparkle-art', count: 7 }
+  ];
+  decorations.forEach((group) => {
+    for (let i = 0; i < group.count; i++) {
+      const item = document.createElement('img');
+      item.src = group.src;
+      item.alt = '';
+      item.className = group.className;
+      item.style.left = `${Math.random() * 88 + 2}%`;
+      item.style.top = `${Math.random() * 88 + 3}%`;
+      item.style.width = `${62 + Math.random() * 78}px`;
+      item.style.transform = `rotate(${-24 + Math.random() * 48}deg)`;
+      decorHost.appendChild(item);
+    }
+  });
+
+  // 絵文字のシャボン玉もゆっくり流します。
+  for (let i = 0; i < 8; i++) {
+    const bubble = document.createElement('span');
+    bubble.className = 'bubble-emoji';
+    bubble.textContent = '🫧';
+    bubble.style.left = `${Math.random() * 96}%`;
+    bubble.style.top = `${Math.random() * 95}%`;
+    bubble.style.setProperty('--duration', `${7 + Math.random() * 9}s`);
+    bubble.style.setProperty('--drift', `${-22 + Math.random() * 44}px`);
+    bubble.style.animationDelay = `${-Math.random() * 12}s`;
+    decorHost.appendChild(bubble);
+  }
+}
+
 // 小さな泡が上昇して消え、また現れます。
 const bubbleHost = document.getElementById('bubbles');
 function makeBubble() {
