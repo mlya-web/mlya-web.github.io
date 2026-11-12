@@ -12,7 +12,6 @@ if (countNode) {
   const counterObserver = new MutationObserver(styleCounter);
   counterObserver.observe(countNode, { childList: true, characterData: true, subtree: true });
   styleCounter();
-  // 外部カウンターの初期化後にも表示を整えます。
   window.addEventListener('load', styleCounter, { once: true });
 }
 
@@ -59,22 +58,66 @@ const fortunes = [
 const fortuneText = document.getElementById('fortune-text');
 if (fortuneText) fortuneText.textContent = fortunes[hashDate(dateKey + '-fortune') % fortunes.length];
 
-// 小さな泡が上昇して消え、また現れます。
-const bubbleHost = document.getElementById('bubbles');
-function makeBubble() {
-  if (!bubbleHost || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const bubble = document.createElement('span');
-  bubble.className = 'bubble';
-  const size = 4 + Math.random() * 15;
-  bubble.style.width = `${size}px`;
-  bubble.style.height = `${size}px`;
-  bubble.style.left = `${Math.random() * 100}%`;
-  bubble.style.setProperty('--duration', `${8 + Math.random() * 13}s`);
-  bubble.style.setProperty('--drift', `${-35 + Math.random() * 70}px`);
-  bubbleHost.appendChild(bubble);
-  bubble.addEventListener('animationend', () => bubble.remove(), { once: true });
+// 星がゆっくり漂います。装飾レイヤーはクリックを妨げません。
+const starField = document.getElementById('star-field');
+const shootingField = document.getElementById('shooting-field');
+const rocket = document.getElementById('rocket');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const random = (min, max) => min + Math.random() * (max - min);
+const randomInt = (min, max) => Math.floor(random(min, max + 1));
+
+if (starField) {
+  const starCount = 25;
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('img');
+    star.className = 'pixel-star';
+    star.alt = '';
+    star.src = `assets/stars/star-${String(randomInt(0, 43)).padStart(2, '0')}.png`;
+    star.style.left = `${random(2, 96)}%`;
+    star.style.top = `${random(3, 96)}%`;
+    star.style.setProperty('--size', `${random(12, 34)}px`);
+    star.style.setProperty('--opacity', random(.48, .9).toFixed(2));
+    star.style.setProperty('--duration', `${random(18, 38)}s`);
+    star.style.setProperty('--twinkle', `${random(3.5, 7)}s`);
+    star.style.setProperty('--delay', `${-random(0, 30)}s`);
+    star.style.setProperty('--dx', `${random(-32, 32)}px`);
+    star.style.setProperty('--dy', `${random(-24, 24)}px`);
+    star.style.setProperty('--rotate', `${random(-18, 18)}deg`);
+    starField.appendChild(star);
+  }
 }
-if (bubbleHost) {
-  for (let i = 0; i < 12; i++) window.setTimeout(makeBubble, i * 500);
-  window.setInterval(makeBubble, 850);
+
+function launchShootingStar() {
+  if (!shootingField || reducedMotion || document.hidden) return;
+  const star = document.createElement('img');
+  star.className = 'shooting-star';
+  star.alt = '';
+  star.src = `assets/shooting-stars/shoot-${String(randomInt(0, 15)).padStart(2, '0')}.png`;
+  star.style.left = `${random(62, 105)}%`;
+  star.style.top = `${random(4, 58)}%`;
+  shootingField.appendChild(star);
+  star.addEventListener('animationend', () => star.remove(), { once: true });
 }
+if (!reducedMotion) {
+  window.setTimeout(launchShootingStar, 4500);
+  window.setInterval(launchShootingStar, 15000);
+}
+
+// ロケットは1機だけ。画面を横切った後、しばらくして再登場します。
+function launchRocket() {
+  if (!rocket || reducedMotion) return;
+  if (document.hidden) {
+    window.setTimeout(launchRocket, 12000);
+    return;
+  }
+  rocket.style.top = `${random(18, 82)}%`;
+  rocket.classList.remove('fly');
+  void rocket.offsetWidth;
+  rocket.classList.add('fly');
+  const duration = 17000;
+  window.setTimeout(() => {
+    rocket.classList.remove('fly');
+    window.setTimeout(launchRocket, randomInt(26000, 42000));
+  }, duration);
+}
+if (rocket && !reducedMotion) window.setTimeout(launchRocket, 18000);

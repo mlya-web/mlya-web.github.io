@@ -3,34 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#bdebf5">
-  <title>すいぞくかん.dat</title>
+  <meta name="theme-color" content="#080f35">
+  <title>404号星.dat</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="sea-decor" aria-hidden="true">
-    <img class="swimmer fish-blue swim-right fish-one" src="fish-blue.png" alt="">
-    <img class="swimmer fish-yellow swim-left fish-two" src="fish-yellow.png" alt="">
-    <img class="swimmer fish-pink swim-right fish-three" src="fish-pink.png" alt="">
-    <img class="swimmer fish-blue swim-left fish-four" src="fish-blue.png" alt="">
-    <img class="swimmer fish-pink swim-left fish-five" src="fish-pink.png" alt="">
-    <img class="swimmer fish-yellow swim-right fish-six" src="fish-yellow.png" alt="">
-    <img class="bubble-cluster bubble-one" src="bubbles.png" alt="">
-    <img class="bubble-cluster bubble-two" src="bubbles.png" alt="">
-    <img class="sparkle-cluster sparkle-one" src="sparkles.png" alt="">
-    <img class="sparkle-cluster sparkle-two" src="sparkles.png" alt="">
-    <div class="bubbles" id="bubbles"></div>
+  <div class="space-decor" id="space-decor" aria-hidden="true">
+    <div class="star-field" id="star-field"></div>
+    <div class="shooting-field" id="shooting-field"></div>
+    <img class="rocket" id="rocket" src="assets/rocket.png" alt="">
   </div>
 
   <main class="site-shell" id="top">
     <header class="hero panel">
-      <img class="site-logo" src="logo-suizokukan.jpg" alt="すいぞくかん.dat">
+      <div class="logo-wrap">
+        <h1 class="site-title">404号星<span>.dat</span></h1>
+      </div>
       <p class="welcome">ようこそ！</p>
       <p class="construction blink">★このサイトは現在も工事中です★</p>
       <nav class="main-nav" aria-label="サイト内メニュー">
         <a href="#news">おしらせ</a>
         <a href="#today">今日のひとこと</a>
-        <a href="#diary">DIARY</a>
         <a href="#fortune">今日の運勢</a>
         <a href="#bbs">BBS</a>
         <a href="#links">LINK</a>
@@ -39,7 +32,8 @@
     </header>
 
     <section class="counter-panel panel" aria-label="アクセスカウンター">
-      <div class="counter-number"><span id="count">0000000</span><span class="counter-suffix">人目の</span></div>
+      <div class="counter-heading">✧ ACCESS COUNTER ✧</div>
+      <p class="counter-line">あなたは <span class="counter-number"><span id="count">0000000</span></span> 人目のお客様です！</p>
       <p class="small-note">キリ番を踏んだらラッキー！踏み逃げOK</p>
     </section>
 
@@ -49,7 +43,6 @@
         <ul class="menu-list">
           <li><a href="#news">おしらせ</a></li>
           <li><a href="#today">今日のひとこと</a></li>
-          <li><a href="#diary">DIARY</a></li>
           <li><a href="#fortune">今日の運勢</a></li>
           <li><a href="#bbs">BBS</a></li>
           <li><a href="#links">LINK</a></li>
@@ -69,11 +62,6 @@
             <p id="daily-line">本日は定休日です。</p>
             <p class="credit" id="daily-credit"></p>
           </div>
-        </section>
-
-        <section class="panel content-panel" id="diary">
-          <h2>DIARY</h2>
-          <div class="inner-paper diary-space"></div>
         </section>
 
         <section class="panel content-panel" id="fortune">
@@ -103,7 +91,7 @@
 
     <footer class="panel footer">
       <p>無断転載禁止……と言うほどのものはまだありません。</p>
-      <p class="copyright">© すいぞくかん.dat</p>
+      <p class="copyright">© 404号星.dat</p>
       <a href="#top" class="back-top">▲ ページの上へ</a>
     </footer>
   </main>
