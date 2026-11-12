@@ -72,7 +72,7 @@ if (starField) {
     const star = document.createElement('img');
     star.className = 'pixel-star';
     star.alt = '';
-    star.src = `assets/stars/star-${String(randomInt(0, 43)).padStart(2, '0')}.png`;
+    star.src = `star-${String(randomInt(0, 43)).padStart(2, '0')}.png`;
     star.style.left = `${random(2, 96)}%`;
     star.style.top = `${random(3, 96)}%`;
     star.style.setProperty('--size', `${random(12, 34)}px`);
@@ -92,7 +92,7 @@ function launchShootingStar() {
   const star = document.createElement('img');
   star.className = 'shooting-star';
   star.alt = '';
-  star.src = `assets/shooting-stars/shoot-${String(randomInt(0, 15)).padStart(2, '0')}.png`;
+  star.src = `shoot-${String(randomInt(0, 15)).padStart(2, '0')}.png`;
   star.style.left = `${random(62, 105)}%`;
   star.style.top = `${random(4, 58)}%`;
   shootingField.appendChild(star);

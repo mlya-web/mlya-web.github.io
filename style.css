@@ -21,7 +21,7 @@ body {
   color: var(--white);
   font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
   line-height: 1.7;
-  background: var(--night) url("assets/space-background.jpg") center center / cover fixed no-repeat;
+  background: var(--night) url("space-background.jpg") center center / cover fixed no-repeat;
   overflow-x: hidden;
 }
 a { color: var(--cyan); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
@@ -180,7 +180,7 @@ a:hover { color: var(--yellow); background: rgba(95, 127, 205, .2); }
 .footer p { margin: 3px 0; }
 .copyright, .back-top { font-size: 11px; }
 
-.space-decor { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.space-decor { position: fixed; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
 .star-field, .shooting-field { position: absolute; inset: 0; overflow: hidden; }
 .pixel-star {
   position: absolute;
