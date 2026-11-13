@@ -160,7 +160,11 @@ a:hover { color: var(--yellow); background: rgba(95, 127, 205, .2); }
 .quote-box { text-align: center; padding: 18px 14px; }
 #daily-line { margin: 0; font-weight: 700; color: #e4edff; }
 .credit { font-size: 11px; color: var(--muted); }
-.applause-space { min-height: 64px; }
+.applause-space { min-height: 84px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; }
+.applause-message { margin: 0 !important; color: #dceaff; font-size: 13px; }
+.fc2-applause-button { display: inline-flex; align-items: center; justify-content: center; padding: 5px 12px; border: 1px solid #91b8f0; border-radius: 4px; background: rgba(35, 51, 105, .88); box-shadow: 0 0 10px rgba(125, 190, 255, .18); }
+.fc2-applause-button:hover { background: rgba(68, 88, 155, .92); }
+.fc2-applause-button img { display: block; max-width: 100%; height: auto; }
 .fortune-box { min-height: 54px; display: flex; align-items: center; }
 .fortune-box p { margin: 0; }
 .guestbook-frame { border: 2px solid #8199d0; border-radius: 3px; overflow: hidden; background: white; }
@@ -190,14 +194,22 @@ a:hover { color: var(--yellow); background: rgba(95, 127, 205, .2); }
   opacity: var(--opacity);
   image-rendering: pixelated;
   animation: star-drift var(--duration) ease-in-out var(--delay) infinite alternate,
-             star-twinkle var(--twinkle) steps(2,end) var(--delay) infinite;
+             star-twinkle var(--twinkle) ease-in-out var(--delay) infinite,
+             star-fade var(--fade) ease-in-out var(--fade-delay) infinite;
   will-change: transform, opacity;
 }
 @keyframes star-drift {
   from { transform: translate3d(0, 0, 0) rotate(0deg); }
   to { transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--rotate)); }
 }
-@keyframes star-twinkle { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.55); } }
+@keyframes star-twinkle {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
+}
+@keyframes star-fade {
+  0%, 38%, 66%, 100% { opacity: var(--opacity); }
+  48%, 56% { opacity: .035; }
+}
 .shooting-star {
   position: absolute;
   width: clamp(68px, 10vw, 128px);

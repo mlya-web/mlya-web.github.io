@@ -67,22 +67,51 @@ const random = (min, max) => min + Math.random() * (max - min);
 const randomInt = (min, max) => Math.floor(random(min, max + 1));
 
 if (starField) {
-  const starCount = 25;
+  const starCount = 34;
+  const placed = [];
+  const fieldWidth = Math.max(starField.clientWidth, window.innerWidth);
+  const fieldHeight = Math.max(starField.clientHeight, window.innerHeight);
+
+  // 近くに星が集まりすぎないよう、サイズに応じて間隔を空けて配置します。
+  function findStarPosition(size) {
+    const minGap = Math.max(24, size * 1.35);
+    for (let attempt = 0; attempt < 180; attempt++) {
+      const x = random(size, Math.max(size, fieldWidth - size));
+      const y = random(size, Math.max(size, fieldHeight - size));
+      const separated = placed.every((point) => {
+        const gap = Math.max(minGap, point.size * 1.2);
+        return Math.hypot(x - point.x, y - point.y) >= gap;
+      });
+      if (separated) {
+        placed.push({ x, y, size });
+        return { x, y };
+      }
+    }
+    const x = random(size, Math.max(size, fieldWidth - size));
+    const y = random(size, Math.max(size, fieldHeight - size));
+    placed.push({ x, y, size });
+    return { x, y };
+  }
+
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement('img');
+    const size = random(9, 31);
+    const point = findStarPosition(size);
     star.className = 'pixel-star';
     star.alt = '';
     star.src = `star-${String(randomInt(0, 43)).padStart(2, '0')}.png`;
-    star.style.left = `${random(2, 96)}%`;
-    star.style.top = `${random(3, 96)}%`;
-    star.style.setProperty('--size', `${random(12, 34)}px`);
-    star.style.setProperty('--opacity', random(.48, .9).toFixed(2));
-    star.style.setProperty('--duration', `${random(18, 38)}s`);
-    star.style.setProperty('--twinkle', `${random(3.5, 7)}s`);
-    star.style.setProperty('--delay', `${-random(0, 30)}s`);
-    star.style.setProperty('--dx', `${random(-32, 32)}px`);
-    star.style.setProperty('--dy', `${random(-24, 24)}px`);
-    star.style.setProperty('--rotate', `${random(-18, 18)}deg`);
+    star.style.left = `${point.x}px`;
+    star.style.top = `${point.y}px`;
+    star.style.setProperty('--size', `${size.toFixed(1)}px`);
+    star.style.setProperty('--opacity', random(.42, .82).toFixed(2));
+    star.style.setProperty('--duration', `${random(42, 78).toFixed(1)}s`);
+    star.style.setProperty('--twinkle', `${random(4.5, 9).toFixed(1)}s`);
+    star.style.setProperty('--fade', `${random(11, 19).toFixed(1)}s`);
+    star.style.setProperty('--delay', `${-random(0, 24).toFixed(1)}s`);
+    star.style.setProperty('--fade-delay', `${-random(0, 18).toFixed(1)}s`);
+    star.style.setProperty('--dx', `${random(-22, 22).toFixed(1)}px`);
+    star.style.setProperty('--dy', `${random(-16, 16).toFixed(1)}px`);
+    star.style.setProperty('--rotate', `${random(-12, 12).toFixed(1)}deg`);
     starField.appendChild(star);
   }
 }
@@ -117,7 +146,7 @@ function launchRocket() {
   const duration = 17000;
   window.setTimeout(() => {
     rocket.classList.remove('fly');
-    window.setTimeout(launchRocket, randomInt(26000, 42000));
+    window.setTimeout(launchRocket, randomInt(12000, 22000));
   }, duration);
 }
-if (rocket && !reducedMotion) window.setTimeout(launchRocket, 18000);
+if (rocket && !reducedMotion) window.setTimeout(launchRocket, 9000);
